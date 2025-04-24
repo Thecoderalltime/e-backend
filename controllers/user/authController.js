@@ -1,7 +1,6 @@
 import { User } from "../../model/userModel.js";
 
 export const loginUser = async (req, res) => {
- 
     try {
         const user =  await User.findOne({email:req.body.email})
         

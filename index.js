@@ -16,7 +16,7 @@ import orderRouter from "./routers/order/orderRouter.js"
 
 // config dot env 
 dotenv.config()
-const PORT = process.env.PORT || 6565
+const PORT = process.env.PORT || 6000
 
 // init app 
 const app = express();

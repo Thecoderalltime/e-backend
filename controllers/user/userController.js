@@ -3,9 +3,10 @@ import { User } from "../../model/userModel.js"
 
 export const createUser = async (req, res) => {
     try {
-        console.log(req.body.password)
         const password = req.body.password;
-        const email = req.body.email
+        const email = req.body.email;
+
+        
         
         const newUser = new User({email,password});
         const doc = await newUser.save();
@@ -38,14 +39,14 @@ export const fetchUserById = async (req, res) => {
     }
 }
 
+// it's work user updata and delete user address array of object 
 export const updateUserById = async (req, res) => {
     try {
         const userId = req.params.id;
         const userData = req.body
-        
         const user = await User.findByIdAndUpdate(userId, userData, { new: true }).exec();
         if (!user) {
-            res.status(4004).json({ message: "User not found" })
+            res.status(404).json({ message: "User not found" })
         }
         res.status(200).json(user)
 
@@ -56,6 +57,7 @@ export const updateUserById = async (req, res) => {
 
 }
 
+// this controller not use in fontend 
 export const deleteUserById = async (req, res) => {
     try {
         const userId = req.params.id;
